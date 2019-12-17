@@ -38,6 +38,7 @@ struct encoder_cfg
 	int force_flush;                     // Force flush on content write
 	int append_mode;                     // Append mode for output files
 	int ucla;                            // 1 if -UCLA used, 0 if not
+	bool switch_timestamp_map;           //if 1, timestamp is enabled
 
 	enum ccx_encoding_type encoding;
 	enum ccx_output_date_format date_format;
