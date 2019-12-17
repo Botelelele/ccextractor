@@ -223,7 +223,7 @@ void set_output_format (struct ccx_s_options *opt, const char *format)
 		opt->write_format = CCX_OF_TRANSCRIPT;
 		if (opt->date_format == ODF_NONE)
 			opt->date_format = ODF_HHMMSSMS;
-		// Sets the right things so that timestamps and the mode are printed.
+		// Sets the right things so that s and the mode are printed.
 		if (!opt->transcript_settings.isFinal){
 			opt->transcript_settings.showStartTime = 1;
 			opt->transcript_settings.showEndTime = 1;
@@ -669,6 +669,10 @@ void print_usage (void)
 	mprint("                       have the default font installed (Helvetica for macOS, Calibri\n");
 	mprint("                       for Windows, and Noto for other operating systems at their\n)");
 	mprint("                       default location\n)");
+	mprint("\n");
+	mprint("       -timestamp_map: Specify whether or not the timestamp will be enabled.\n");
+	mprint("                       0: Timestamp disabled\n");
+	mprint("                       1: Timestamp enabled\n");
 	mprint("\n");
 	mprint("Options that affect how ccextractor reads and writes (buffering):\n");
 
@@ -2394,6 +2398,12 @@ int parse_parameters (struct ccx_s_options *opt, int argc, char *argv[])
 		if (strcmp(argv[i], "-font") == 0 && i < argc - 1)
 		{
 			opt->enc_cfg.render_font = argv[i + 1];
+			i++;
+			continue;
+		}
+		if (strcmp(argv[i], "-timestamp_map") == 0 && i < argc - 1)
+		{
+			opt->= argv[i + 1];
 			i++;
 			continue;
 		}
